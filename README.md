@@ -3,6 +3,28 @@ Proyecto para la asignatura de Infraestructuras Virtuales
 
 ## Planteamiento
 
-El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta (y posteriormente cerrarla cuando desee) y obtener un enlace. Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
+El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta (y posteriormente cerrarla cuando desee) y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
 
-Lo más probable es que sea escrito en **python**
+__**NOTA:**__ *En caso de ser una aplicación demasiado grande para considerarse un microservicio, consideraremos solo la primera mitad. Es decir, un servicio para crear encuestas, pero no para votar en ellas.*
+
+El lenguaje de programación elegido será **python**
+
+## Tecnología 
+
+ - __Sistema de logs:__ Nuestro proyecto incluirá una utilidad para llevar registro de todos los cambios de la aplicación y cuando estos han sido producidos. La tecnología elegida es **logstash**
+
+ - __Integración continua:__ Incluiremos también un sistema de integración continua para verificar que los nuevos cambios producidos en la aplicación son consistentes y no producen errores de primer orden. Utilizaremos **Jenkins**
+
+ - __Almacenamiento de datos:__ Nuestra aplicación debe almacenar solo y exclusivamente información sobre encuestas. Nada más. una sola tabla con identificador, fecha_inicio, fecha_fin, opcion_1, votos_opción_1... Elegiremos por tanto una base de datos no relacional como **MongoDB**
+
+ - __API:__ El formato de la API será una api REST y será desarrollada con **flask**
+
+ - __Entornos Virtuales:__ Como se implementarán en python, usaremos **pipenv** y no **virtualenv** apostando por la sugerencia del profesor de la asignatura.
+
+ - __Clase:__ Una clase **"Encuestas"** representará todas las operaciones con la base de datos referentes a las encuestas. Crear una encuesta, borrarla, actualizar el numero de votos... 
+
+ - __Dependencias:__ Se incluirá un fichero **requirements.txt** para ser ejecutado con pip -r
+
+ - __Test unitarios:__ No se descarta usar **unitest** o **pytest** para implementar TDD en el desarrollo de la aplicación.
+
+ - __Despliegue:__ Probablemente **Heroku** o **Azure**. Lo que tenga disponible antes. 
