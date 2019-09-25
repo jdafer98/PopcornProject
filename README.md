@@ -5,6 +5,10 @@ Proyecto para la asignatura de Infraestructuras Virtuales
 
 El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta (y posteriormente cerrarla cuando desee) y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
 
+En principio el usuario opera con la API REST anteriormente mencionada y mediante un método de HTTP, interactua con una instancia de la clase "Encuestas". Esta clase contiene toda la fucnionalidad que se espera de la aplicación, en su mayoria operaciones de inserción, consulta y borrado de la base de datos.
+
+Los codigos de operación (200 OK, 404 NOT FOUND...) y toda la información correspondiente a la operación realizada se devolverá en formato JSON.
+
 __**NOTA:**__ *En caso de ser una aplicación demasiado grande para considerarse un microservicio, consideraremos solo la primera mitad. Es decir, un servicio para crear encuestas, pero no para votar en ellas.*
 
 El lenguaje de programación elegido será **python**
