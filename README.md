@@ -17,7 +17,7 @@ El lenguaje de programación elegido será **python**
 
  - __Sistema de logs:__ Nuestro proyecto incluirá una utilidad para llevar registro de todos los cambios de la aplicación y cuando estos han sido producidos. La tecnología elegida es **logstash**
 
- - __Integración continua:__ Incluiremos también un sistema de integración continua para verificar que los nuevos cambios producidos en la aplicación son consistentes y no producen errores de primer orden. Utilizaremos **Jenkins**
+ - __Integración continua:__ Incluiremos también un sistema de integración continua para verificar que los nuevos cambios producidos en la aplicación son consistentes y no producen errores de primer orden. Utilizaremos **Travis**
 
  - __Almacenamiento de datos:__ Nuestra aplicación debe almacenar solo y exclusivamente información sobre encuestas. Nada más. una sola tabla con identificador, fecha_inicio, fecha_fin, opcion_1, votos_opción_1... Elegiremos por tanto una base de datos no relacional como **MongoDB**
 
