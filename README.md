@@ -5,6 +5,8 @@ Travis Build: [![Build Status](https://travis-ci.org/jdafer98/Controv3rsial.svg?
 
 Shippable Build: [![Run Status](https://api.shippable.com/projects/5d9a054161bce00007c0143e/badge?branch=master)]()
 
+Circle-ci Build: [![CircleCI](https://circleci.com/gh/jdafer98/Controv3rsial.svg?style=svg)](https://circleci.com/gh/jdafer98/Controv3rsial)
+
 ## Planteamiento
 
 El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta (y posteriormente cerrarla cuando desee) y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
