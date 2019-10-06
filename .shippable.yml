@@ -1,6 +1,6 @@
 language: python
 python:
-  - 3.5
+  - 3.6
 
 build:
   ci:
@@ -8,5 +8,5 @@ build:
   - pip install --upgrade pytest
 
 script: 
-  - pytest
+  - pytest 
 
