@@ -1,5 +1,5 @@
 # Controv3rsial
-Proyecto para la asignatura de Infraestructuras Virtuales.
+Proyecto para la asignatura de Infraestructuras Virtuales
 
 Travis Build: [![Build Status](https://travis-ci.org/jdafer98/Controv3rsial.svg?branch=master)](https://travis-ci.org/jdafer98/Controv3rsial)
 
