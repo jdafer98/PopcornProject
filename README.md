@@ -1,7 +1,7 @@
 # Controv3rsial
 Proyecto para la asignatura de Infraestructuras Virtuales
 
-https://travis-ci.org/jdafer98/Controv3rsial.svg?branch=master
+[![Build Status](https://travis-ci.org/jdafer98/Controv3rsial.svg?branch=master)](https://travis-ci.org/jdafer98/Controv3rsial)
 
 ## Planteamiento
 
