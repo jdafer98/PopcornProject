@@ -6,5 +6,6 @@ jobs:
 
     steps:
       - run: pip install --user --upgrade pip
+      - run: pip install --user --upgrade pipenv
       - run: pip install --user pytest
       - run: pytest
