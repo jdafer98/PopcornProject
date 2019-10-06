@@ -13,6 +13,7 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv venv
+            pip install pytest
             . venv/bin/activate
 
       # Step 3: run linter and tests
