@@ -5,6 +5,6 @@ jobs:
       - image: circleci/python:3.6.2-stretch-browsers
 
     steps:
-      - run: pip install --upgrade pip
-      - run: pip install --upgrade pytest
+      - run: pip install --user --upgrade pip
+      - run: pip install --user --upgrade pytest
       - run: pytest
