@@ -3,8 +3,6 @@ Proyecto para la asignatura de Infraestructuras Virtuales
 
 Travis Build: [![Build Status](https://travis-ci.org/jdafer98/Controv3rsial.svg?branch=master)](https://travis-ci.org/jdafer98/Controv3rsial)
 
-Shippable Build: [![Run Status](https://api.shippable.com/projects/5d9a054161bce00007c0143e/badge?branch=master)]()
-
 Circle-ci Build: [![CircleCI](https://circleci.com/gh/jdafer98/Controv3rsial.svg?style=svg)](https://circleci.com/gh/jdafer98/Controv3rsial)
 
 ## Planteamiento
