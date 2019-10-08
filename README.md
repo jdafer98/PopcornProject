@@ -3,10 +3,12 @@ Proyecto para la asignatura de Infraestructuras Virtuales
 
 Bajo Licencia: [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-
 Travis Build: [![Build Status](https://travis-ci.org/jdafer98/Controv3rsial.svg?branch=master)](https://travis-ci.org/jdafer98/Controv3rsial)
 
 Circle-ci Build: [![CircleCI](https://circleci.com/gh/jdafer98/Controv3rsial.svg?style=svg)](https://circleci.com/gh/jdafer98/Controv3rsial)
+
+Lenguaje: [![Powered by: Python](https://img.shields.io/badge/powered%20by-python-yellow)]
+
 
 ## Planteamiento
 
