@@ -47,7 +47,7 @@ o
 ``` 
 En caso de fallo relacionado con permisos.
 
-Una vez instalado, descargue los archivos pipenv y pipenv.lock que se encuentran [en el siguiente enlace](https://github.com/jdafer98/Controv3rsial/tree/master/.pipenv_files).
+Una vez instalado, descargue los archivos _Pipfile_ y _Pipfile.lock_ que se encuentran [en el siguiente enlace](https://github.com/jdafer98/Controv3rsial/tree/master/.pipenv_files).
 
 Una vez hecho esto, arraste los archivos a la carpeta donde ha descargado previamente Controv3rsial. Dentro de esa carpeta, ejecute:
 
