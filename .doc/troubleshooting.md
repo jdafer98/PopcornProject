@@ -35,7 +35,7 @@ Visite [este enlace](http://www.fabfile.org/) para más información.
 
 ## Otras soluciones
 
-Si todo esto no ha resuelto su problema, existe una última solución consistente en instalar la herramienta en un entorno virtual de python preparado para este propósito. Utilizaremos para ello un entorno virtual de [pipenv](https://pipenv-es.readthedocs.io/es/latest/). Como prerequisito, se supone que python3 y pipenv se encuentran ya instalados. Ejecute:
+Si todo esto no ha resuelto su problema, existe una última solución consistente en instalar la herramienta en un entorno virtual de python preparado para este propósito. Utilizaremos para ello un entorno virtual de [pipenv](https://pipenv-es.readthedocs.io/es/latest/). Como prerequisito, se supone que python3 y pip se encuentran ya instalados. Ejecute:
 
 ```bash
 	pip install pipenv
