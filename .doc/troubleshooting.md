@@ -47,7 +47,7 @@ o
 ``` 
 En caso de fallo relacionado con permisos.
 
-Una vez instalado, descargue los archivos pipenv y pipenv.lock que se encuentran [en el siguiente enlace](https://github.com/jdafer98/Controv3rsial/.pipenv_files).
+Una vez instalado, descargue los archivos pipenv y pipenv.lock que se encuentran [en el siguiente enlace](https://github.com/jdafer98/Controv3rsial/tree/master/.pipenv_files).
 
 Una vez hecho esto, arraste los archivos a la carpeta donde ha descargado previamente Controv3rsial. Dentro de esa carpeta, ejecute:
 
@@ -56,7 +56,7 @@ Una vez hecho esto, arraste los archivos a la carpeta donde ha descargado previa
     (2) $> pipenv shell
 	$> fab build
 ``` 
-La herramienta debe haberse instalado satisfactoriamente. **Nota:** Si opta por esta solución, nótese que antes de volver a ejecutar la herramienta, debe volver a ejecutar "pipenv shell". Una vez en el entorno virtual, ejecutar la herramienta.
+La herramienta debe haberse instalado satisfactoriamente. **Nota:** Si opta por esta solución, nótese que antes de volver a ejecutar la herramienta, debe volver a ejecutar (2) "pipenv shell". Una vez en el entorno virtual, ejecutar la herramienta.
 
 
 
