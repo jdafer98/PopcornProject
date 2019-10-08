@@ -12,13 +12,9 @@ Lenguaje: [![Powered by: Python](https://img.shields.io/badge/powered%20by-pytho
 
 ## Planteamiento
 
-El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta (y posteriormente cerrarla cuando desee) y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
+El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.
 
-En principio el usuario opera con la API REST anteriormente mencionada y mediante un método de HTTP, interactua con una instancia de la clase "Encuestas". Esta clase contiene toda la fucnionalidad que se espera de la aplicación, en su mayoria operaciones de inserción, consulta y borrado de la base de datos.
-
-Los codigos de operación (200 OK, 404 NOT FOUND...) y toda la información correspondiente a la operación realizada se devolverá en formato JSON.
-
-__**NOTA:**__ *En caso de ser una aplicación demasiado grande para considerarse un microservicio, consideraremos solo la primera mitad. Es decir, un servicio para crear encuestas, pero no para votar en ellas.*
+En principio el cliente RESR opera con la API REST anteriormente mencionada y mediante un método de HTTP, interactua con una instancia de la clase "Encuestas". Esta clase contiene toda la fucnionalidad que se espera de la aplicación, en su mayoria operaciones de inserción, consulta y borrado de la base de datos.
 
 El lenguaje de programación elegido será **python**
 
@@ -26,7 +22,7 @@ El lenguaje de programación elegido será **python**
 
  - __Sistema de logs:__ Nuestro proyecto incluirá una utilidad para llevar registro de todos los cambios de la aplicación y cuando estos han sido producidos. La tecnología elegida es **logstash**
 
- - __Integración continua:__ Incluiremos también un sistema de integración continua para verificar que los nuevos cambios producidos en la aplicación son consistentes y no producen errores de primer orden. Utilizaremos **Travis**
+ - __Integración continua:__ Incluiremos también un sistema de integración continua para verificar que los nuevos cambios producidos en la aplicación son consistentes y no producen errores de primer orden. Utilizaremos **Travis** y **Circle-CI**. En un comienzo se pensaba usar Jenkins, pero el alojamiento supuso un problema, así que se optó por servicios que disponen de sus propias infraestructuras. Gracias a los **hooks** de github, los test diseñados para la herramienta se corren cuando se detecta un cambio en la aplicación.
 
  - __Almacenamiento de datos:__ Nuestra aplicación debe almacenar solo y exclusivamente información sobre encuestas. Nada más. una sola tabla con identificador, fecha_inicio, fecha_fin, opcion_1, votos_opción_1... Elegiremos por tanto una base de datos no relacional como **MongoDB**
 
@@ -41,3 +37,26 @@ El lenguaje de programación elegido será **python**
  - __Test unitarios:__ No se descarta usar **unitest** o **pytest** para implementar TDD en el desarrollo de la aplicación.
 
  - __Despliegue:__ Probablemente **Heroku** o **Azure**. Lo que tenga disponible antes. 
+
+##Instalación
+  **Nota:** La aplicación ha sido testeada en Python 3.6 y 3.7
+
+**Prerequisitos:** Instalación del intérprete de python3, y [fabric (versión 2)](http://www.fabfile.org/).
+
+**Instalación:**
+ 1. Clonar este repositorio con ```bash git clone``` o descargar como zip.
+
+ 2. instalar la aplicación con 
+
+```bash
+     fab build
+```
+ 3. probar que la aplicación pasa correctamente los test con
+
+```bash
+     fab test
+```
+
+## Troubleshooting
+
+Si encuentra algún problema con la instalación de la aplicación, puede dirigirse [aquí](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/troubleshooting.md)
