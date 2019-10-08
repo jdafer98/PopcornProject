@@ -39,12 +39,13 @@ El lenguaje de programación elegido será **python**
  - __Despliegue:__ Probablemente **Heroku** o **Azure**. Lo que tenga disponible antes. 
 
 ##Instalación
-  **Nota:** La aplicación ha sido testeada en Python 3.6 y 3.7
+
+**Nota:** La aplicación ha sido testeada en Python 3.6 y 3.7
 
 **Prerequisitos:** Instalación del intérprete de python3, y [fabric (versión 2)](http://www.fabfile.org/).
 
 **Instalación:**
- 1. Clonar este repositorio con ```bash git clone``` o descargar como zip.
+ 1. Clonar este repositorio con ```git clone``` o descargar como zip.
 
  2. instalar la aplicación con 
 
