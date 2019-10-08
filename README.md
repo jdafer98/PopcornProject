@@ -1,5 +1,5 @@
 # Controv3rsial
-Proyecto para la asignatura de Infraestructuras Virtuales
+Proyecto para la asignatura de Infraestructuras Virtuales.
 
 Bajo Licencia: [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
