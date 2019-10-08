@@ -38,7 +38,7 @@ El lenguaje de programación elegido será **python**
 
  - __Despliegue:__ Probablemente **Heroku** o **Azure**. Lo que tenga disponible antes. 
 
-##Instalación
+## Instalación
 
 **Nota:** La aplicación ha sido testeada en Python 3.6 y 3.7
 
