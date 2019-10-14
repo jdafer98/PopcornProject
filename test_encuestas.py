@@ -3,33 +3,67 @@
 import json
 import encuestas
 
-#se intentan crear 10 encuestas. Cada posición de la lista 'l' es un par clave->valor.
-def test_crear_encuesta():
+
+def test_se_crean_todos_los_campos():
 	fields = ["titulo","hashcode","O1","O2","O3","O4"]
 	test_pass = True
 	l = []
 	enc = encuestas.Encuestas()
 	
-	# Creamos 10 encuestas. Por cada encuesta que se crea, se comprueba:
+	# Creamos 10 encuestas.
 	for i in range(0,10):
 		l.append(enc.crear_encuesta( "titulo" + str(i) ))
-
 
 		#Que todos los campos se hayan creado
 		for j in range(0,len(fields)):
 			if fields[j] not in l[i]:
 				test_pass = False
 
+	assert test_pass
+
+def test_titulo_dado_como_argumento():
+	fields = ["titulo","hashcode","O1","O2","O3","O4"]
+	test_pass = True
+	l = []
+	enc = encuestas.Encuestas()
+	
+	# Creamos 10 encuestas.
+	for i in range(0,10):
+		l.append(enc.crear_encuesta( "titulo" + str(i) ))
+
 		#Que el titulo sea el dado como argumento
 		if  "titulo" + str(i) != l[i]["titulo"]:
 			test_pass = False
+
+	assert test_pass
+
+def test_opciones_a_0():
+	fields = ["titulo","hashcode","O1","O2","O3","O4"]
+	test_pass = True
+	l = []
+	enc = encuestas.Encuestas()
+	
+	# Creamos 10 encuestas.
+	for i in range(0,10):
+		l.append(enc.crear_encuesta( "titulo" + str(i) ))
 
 		#Que las opciones se inicialicen a 0
 		if l[i]["O1"] != 0 or l[i]["O2"] != 0 or l[i]["O3"] != 0 or l[i]["O4"] != 0:
 			test_pass = False
 
-		#Que el valor del 'hashcode' sea único en todas las encuestas creadas
+	assert test_pass
 
+def test_hashcode_unico():
+	fields = ["titulo","hashcode","O1","O2","O3","O4"]
+	test_pass = True
+	l = []
+	enc = encuestas.Encuestas()
+	
+	# Creamos 10 encuestas.
+	for i in range(0,10):
+		l.append(enc.crear_encuesta( "titulo" + str(i) ))
+
+		#Que el valor del 'hashcode' sea único en todas las encuestas creadas
 		for k in range(0,len(l)):
 			if l[i]["hashcode"] == l[k]["hashcode"] and i != k:
 				test_pass = False
