@@ -19,6 +19,8 @@ install: #Instalamos pytest en su última versión
 script: pytest #ejecutamos pytest en la raiz pytest
 
 ## Circle-ci
+
+```yaml
 version: 2 #Especificamos la versión de Circle
 jobs: #Nos basta con una tarea. En realidad no necesitamos concurrencia de momento...
   build:
@@ -42,3 +44,4 @@ jobs: #Nos basta con una tarea. En realidad no necesitamos concurrencia de momen
           command: |
             . venv/bin/activate
             pytest 
+```

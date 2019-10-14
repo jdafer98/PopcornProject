@@ -18,7 +18,7 @@ El esquema es el que sigue:
 @task #Un task o tarea que queremos que se ejecute con la herramienta. Un decorador.
 def build(name): #Una pequeña función que se ejecuta cuando se dispara el task
 	run("pip install -r requirements.txt") # Y la acción que se requiere
-
+```python
 @task
 def userbuild(name):
 	run("pip install --user -r requirements.txt")
@@ -26,7 +26,7 @@ def userbuild(name):
 @task
 def test(name):
 	run("pytest")
-
+```
 
    **build** es la construcción estándar. Otra versión de esta **userbuid** , la cual instala el proyecto en el espacio del usuario que ejecuta pip. Suele resolver problemas relacionados con permisos. Por último, **test** corre los test que vienen de serie con la herramienta para comprobar que todo anda bien. Es opcional.
 
