@@ -58,6 +58,12 @@ El lenguaje de programación elegido será **python**
      fab test
 ```
 
+##Información totalmente irrelevante para alguien que desee usar la herramienta
+
+**¿Quieres saber como funciona el archivo fabfile?:** [fabfile]()
+
+**¿Quieres saber más acerca de la configuración de los sistemas de integración?:** [configuración_ci]()
+
 ## Troubleshooting
 
 Si encuentra algún problema con la instalación de la aplicación, puede dirigirse [aquí](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/troubleshooting.md)
