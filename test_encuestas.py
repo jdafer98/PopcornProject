@@ -1,4 +1,4 @@
-#Test para la clase "Encuestas"
+#Test para la clase "Encuestas"...
 
 import json
 import encuestas
