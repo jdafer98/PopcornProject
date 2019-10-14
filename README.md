@@ -60,9 +60,9 @@ El lenguaje de programación elegido será **python**
 
 ##Información totalmente irrelevante para alguien que desee usar la herramienta
 
-**¿Quieres saber como funciona el archivo fabfile?:** [fabfile]()
+**¿Quieres saber como funciona el archivo fabfile?:** [fabfile](https://github.com/jdafer98/Controv3rsial/.doc/configuracion_ci.md)
 
-**¿Quieres saber más acerca de la configuración de los sistemas de integración?:** [configuración_ci]()
+**¿Quieres saber más acerca de la configuración de los sistemas de integración?:** [configuración_ci](https://github.com/jdafer98/Controv3rsial/.doc/configuracion_ci.md)
 
 ## Troubleshooting
 
