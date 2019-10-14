@@ -66,4 +66,4 @@ El lenguaje de programación elegido será **python**
 
 ## Troubleshooting
 
-Si encuentra algún problema con la instalación de la aplicación, puede dirigirse [aquí](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/troubleshooting.md)
+Si encuentra algún problema con la instalación de la aplicación, puede dirigirse [aquí](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/troubleshooting.md).
