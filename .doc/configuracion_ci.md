@@ -2,7 +2,7 @@
 
 ##Breve resumen
 
-Se han implementado dos sistemas de integración continua en el proyecto con el propósito de garantizar una correcta integración de nuevos recursos sin corromper la consistencia del proyecto.
+Se han implementado dos sistemas de integración continua en el proyecto con el propósito de garantizar una correcta integración de nuevos recursos sin corromper la consistencia del proyecto. 
 
 Travis-ci testea la aplicación en python 3.6, y Circle lo hará en python 3.7. La explicación de los archivos se encuentra a continuación.
 
