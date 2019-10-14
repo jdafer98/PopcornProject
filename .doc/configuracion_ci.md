@@ -7,6 +7,8 @@ Se han implementado dos sistemas de integración continua en el proyecto con el 
 Travis-ci testea la aplicación en python 3.6, y Circle lo hará en python 3.7. La explicación de los archivos se encuentra a continuación.
 
 ## Travis-ci
+
+```yaml
 language: python #Especificamos el lenguaje
 python:  #y la versión
   - 3.6
@@ -17,6 +19,7 @@ install: #Instalamos pytest en su última versión
   - pip install --upgrade pytest
 
 script: pytest #ejecutamos pytest en la raiz pytest
+```
 
 ## Circle-ci
 
