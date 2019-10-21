@@ -1,4 +1,4 @@
-#Test para la clase "Encuestas"...
+#Test para la clase "Encuestas"
 
 import json
 import encuestas
@@ -98,5 +98,47 @@ def test_encuesta2json():
 
     #comprobamos si al invertir el json, los campos coinciden
     assert una_encuesta == json.loads(encuesta_preparada)
+
+def test_add():
+	#Creamos una encuesta
+	enc = encuestas.Encuestas()
+	una_encuesta = enc.crear_encuesta("a")
+
+	#la añadimos a la estructura de datos propia de la clase
+	enc.add(una_encuesta)
+	
+	#Intentamos encontrarla
+	r = enc.extraer_por_hashcode(una_encuesta['hashcode'])
+
+	assert r != -1
+
+def test_extraer_por_hashcode():
+	#Creamos una encuesta
+	enc = encuestas.Encuestas()
+	una_encuesta = enc.crear_encuesta("a")
+	#Añadimos
+	enc.add(una_encuesta)
+	#Intentamos recuperar la encuesta
+	r = enc.extraer_por_hashcode(una_encuesta['hashcode'])
+
+	assert r != -1
+
+def test_eliminar_por_hashcode():
+	#Creamos una encuesta
+	enc = encuestas.Encuestas()
+	una_encuesta = enc.crear_encuesta("a")
+	#Añadimos
+	enc.add(una_encuesta)
+	
+	#Eliminamos
+	r1 = enc.eliminar_por_hashcode(una_encuesta['hashcode'])
+	#Intentamos recuperar la encuesta
+	r2 = enc.extraer_por_hashcode(una_encuesta['hashcode'])
+
+	assert r1 == 0 and r2 == -1
+	
+
+
+	
 
 
