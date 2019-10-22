@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from encuestas import *
 from sys import argv
 
@@ -33,9 +33,9 @@ if len(argv) == 2:
 				enc.votar(a,'O4')
 				return jsonify('{ "status": "200 OK" }')
 			else:
-				return jsonify('{ "error": "400 INVALID OPTION" }')
+				return jsonify('{ "error": "400 INVALID OPTION" }'), 400
 		else:
-			return jsonify('{ "error": "404 NOT FOUND" }')
+			return jsonify('{ "error": "404 NOT FOUND" }'), 404
 
 	@app.route('/get_encuesta',methods=['GET'])
 	def get_encuesta():
@@ -43,7 +43,7 @@ if len(argv) == 2:
 		if a != -1:
 			return jsonify(enc.encuesta2json(a))
 		else:
-			return jsonify('{ "error": "404 NOT FOUND" }')
+			return jsonify('{ "error": "404 NOT FOUND" }'), 404
 
 	@app.route('/eliminar_encuesta',methods=['DELETE'])
 	def eliminar_encuesta():
@@ -51,7 +51,7 @@ if len(argv) == 2:
 		if a == 0:
 			return jsonify('{ "status": "200 OK" }')
 		else:
-			return jsonify('{ "error": "404 NOT FOUND" }')
+			return jsonify('{ "error": "404 NOT FOUND" }'), 404
 
 
 	app.run(port=int(argv[1]))
