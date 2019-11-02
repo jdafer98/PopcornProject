@@ -12,6 +12,8 @@ install:
   - ls /etc/supervisor/conf.d
   - sudo mv ./controv3rsial.conf /etc/supervisor/conf.d
   - sudo mv ./supervisor_script.sh /home/travis
+  - sudo cp ./restapi.py /home/travis
+  - sudo cp ./encuestas.py /home/travis
   - pip install --upgrade pytest
   - sudo supervisorctl reread
   - sudo supervisorctl reload
