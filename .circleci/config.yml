@@ -8,17 +8,4 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - checkout
-      - run:
-          name: Instalar dependencias
-          command: |
-            python3 -m venv venv
-            pip install --user pytest
-            . venv/bin/activate
-
-      # Step 3: Correr test
-      - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            pytest 
+      
