@@ -17,6 +17,8 @@ install:
   - sleep 3
   - sudo supervisorctl status
   - sleep 3
+  - sudo cat ./supervisor_out.log
+  - sudo cat ./supervisor_err.log
 
 script: pytest
 
