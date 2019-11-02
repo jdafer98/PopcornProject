@@ -18,6 +18,7 @@ install:
   - sleep 3
   - sudo supervisorctl status
   - sleep 3
+  - locate gunicorn
   - sudo cat /home/travis/supervisor_out.log
   - sudo cat /home/travis/supervisor_err.log
 
