@@ -14,7 +14,9 @@ install:
   - pip install --upgrade pytest
   - sudo supervisorctl reread
   - sudo supervisorctl reload
+  - sleep 3
   - sudo supervisorctl status
+  - sleep 3
 
 script: pytest
 
