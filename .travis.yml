@@ -12,8 +12,8 @@ install:
   - ls /etc/supervisor/conf.d
   - sudo mv ./controv3rsial.conf /etc/supervisor/conf.d
   - pip install --upgrade pytest
-  - supervisorctl reread
-  - supervisorctl reload
+  - sudo supervisorctl reread
+  - sudo supervisorctl reload
 
 script: pytest
 
