@@ -18,7 +18,7 @@ install:
   - sleep 3
   - sudo supervisorctl status
   - sleep 3
-  - ls /home/travis/.local
+  - ls /usr/bin
   - sudo cat /home/travis/supervisor_out.log
   - sudo cat /home/travis/supervisor_err.log
 
