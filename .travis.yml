@@ -9,7 +9,8 @@ install:
   - id
   - pwd
   - sudo apt-get install supervisor
-  - mv controv3rsial.conf /etc/supervisor/conf.d
+  - ls /etc/supervisor/conf.d
+  - sudo mv ./controv3rsial.conf /etc/supervisor/conf.d
   - pip install --upgrade pytest
   - supervisorctl reread
   - supervisorctl reload
