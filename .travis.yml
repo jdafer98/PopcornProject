@@ -4,8 +4,9 @@ python:
 
 install:
   - pip install --upgrade pip
-  - pip install -r requirements.txt
+  - pip install --user -r requirements.txt
   - id
+  - pwd
   - mv controv3rsial.conf /etc/supervisor/conf.d
   - pip install --upgrade pytest
   - supervisorctl reread
