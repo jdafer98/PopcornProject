@@ -62,11 +62,11 @@ Todas estas tareas funcionan como un wrapper de supervisor, el cual será instal
 
 **¿Quieres saber más acerca de la configuración de los sistemas de integración?:** [configuración_ci](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/configuracion_ci.md)
 
-**¿Quieres saber más acerca de mi API REST?:** [API REST]
+**¿Quieres saber más acerca de mi API REST?:** [API REST](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/api_rest_doc.md)
 
-**¿Quieres saber cómo ha sido testeada mi API REST?:** [test API REST]
+**¿Quieres saber cómo ha sido testeada mi API REST?:** [test API REST](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/test_api_rest_doc.md)
 
-**¿Quieres saber como ha sido configurado supervisor?** [Supervisor]
+**¿Quieres saber como ha sido configurado supervisor?** [Supervisor](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/supervisor.md)
 
 
 
