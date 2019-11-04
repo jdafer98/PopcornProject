@@ -18,6 +18,10 @@ En principio el cliente REST opera con la API REST anteriormente mencionada y me
 
 El lenguaje de programación elegido será **python**
 
+Como WSGI se ha elegido **gunicorn** que será llamado a través de **Supervisor**.
+
+Todas las tareas estarán automatizadas a través de **fabric2**. Tan solo será necesario de hecho conocer el nombre de las tareas de fabric para disponer de toda la utilidad del servicio.
+
 ## Instalación
 
 **Nota:** La aplicación ha sido testeada en Python 3.6 y 3.7
