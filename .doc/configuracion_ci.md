@@ -10,15 +10,35 @@ Travis-ci testea la aplicación en python 3.6, y Circle lo hará en python 3.7. 
 
 ```yaml
 language: python #Especificamos el lenguaje
-python:  #y la versión
-  - 3.6
+sudo: required #Necesario para editar y mover archivos de configuración
+python:
+  - 3.6 #Versiones de Python
 
-before_install: #Antes de la instalación nos aseguramos de que esté instalado pip en su última versión
+install:
+ #PARTE DE INSTALACIÓN DE REQUISITOS
   - pip install --upgrade pip
-install: #Instalamos pytest en su última versión
+  - pip install -r requirements.txt
+  - sudo apt-get install supervisor
+ #COLOCAMOS LOS ARCHIVOS NECESARIOS EN SU SITIO
+  - sudo mv ./controv3rsial.conf /etc/supervisor/conf.d
+  - sudo mv ./supervisor_script.sh /home/travis
+  - sudo cp ./restapi.py /home/travis
+  - sudo cp ./encuestas.py /home/travis
   - pip install --upgrade pytest
+ #LEEMOS EL ARCHIVO DE CONFIGURACIÓN Y ARRANCAMOS EL SERVICIO
+  - sudo supervisorctl reread
+  - sudo supervisorctl reload
+ #HACEMOS SLEEP PARA QUE CARGUE POR COMPLETO EL STATUS
+  - sleep 3
+  - sudo supervisorctl status
+  - sleep 3
+ #HACEMOS UN CAT DE LOS LOGS PARA FACILITAR LA DEPURACIÓN
+  - sudo find / -name gunicorn
+  - sudo cat /home/travis/supervisor_out.log
+  - sudo cat /home/travis/supervisor_err.log
 
-script: pytest #ejecutamos pytest en la raiz pytest
+ #SE PASAN TODOS LOS TEST CON EL SERCICIO ACTIVO
+script: pytest
 ```
 
 ## Circle-ci
@@ -48,3 +68,6 @@ jobs: #Nos basta con una tarea. En realidad no necesitamos concurrencia de momen
             . venv/bin/activate
             pytest 
 ```
+
+**NOTA IMPORTANTE** Circle-CI No se usa para testear la API REST.
+

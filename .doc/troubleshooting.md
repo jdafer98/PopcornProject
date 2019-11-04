@@ -33,6 +33,23 @@ y posteriormente
 además recuerde que no solo es necesario tener la herramienta **fabric2** instalada, sino también las bibliotecas de python correspondientes.
 Visite [este enlace](http://www.fabfile.org/) para más información.
 
+## No se encuenta /../../bin/gunicorn
+
+Es probable que gunicorn se encuentre instalado en una ruta alternativa a la ruta por defecto de gunicorn. Este a su vez es utilizado por supervisor. Para cambiarlo:
+
+1. En Linux, use
+
+```bash
+	locate gunicorn
+```
+
+o bien
+
+```bash
+	sudo find / -name 
+```
+para localizar el binario de gunicorn. Una vez encontrado sustituya la ruta en el script "supervisor_script.sh" por la ruta por defecto. Eso debería solucionar el problema.
+
 ## Otras soluciones
 
 Si todo esto no ha resuelto su problema, existe una última solución consistente en instalar la herramienta en un entorno virtual de python preparado para este propósito. Utilizaremos para ello un entorno virtual de [pipenv](https://pipenv-es.readthedocs.io/es/latest/). Como prerequisito, se supone que python3 y pip se encuentran ya instalados. Ejecute:
