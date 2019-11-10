@@ -20,6 +20,10 @@ class MyTest(LiveServerTestCase):
 		response = urllib.request.urlopen(self.get_server_url())
 		self.assertEqual(response.code, 200)
 
+	def test_status_api(self):
+		response = urllib.request.urlopen(self.get_server_url() + "/status")
+		self.assertEqual(response.code, 200)
+
 	def test_crear_encuesta_api(self):
 		values = {'name':'abc'}
 		data = urllib.parse.urlencode(values)

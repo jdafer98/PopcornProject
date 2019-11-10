@@ -12,7 +12,7 @@ def test(name):
 @task
 def start(name):
 	print("Recuerda especificar un puerto en la variable de entorno mediante 'export CV3_PORT=<num_puerto>'")
-	run("sudo supervisorctl reread && sudo supervisorctl reload")
+	run("sudo supervisorctl reread && sudo supervisorctl reload && sudo supervisorctl start cv3")
 @task
 def stop(name):
 	run("sudo supervisorctl stop cv3")

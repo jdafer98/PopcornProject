@@ -10,6 +10,10 @@ enc = Encuestas()
 def raiz():
 	return jsonify('{ "status": "OK" }')
 
+@app.route('/status')
+def status():
+	return jsonify('{ "status": "OK" }')
+
 @app.route('/crear_encuesta',methods=['POST'])
 def ruta_crear_encuesta():
 	nueva_encuesta = enc.crear_encuesta(request.form['name'])
