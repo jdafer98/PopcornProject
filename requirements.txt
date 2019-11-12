@@ -3,4 +3,4 @@ flask
 Flask-Testing
 gunicorn
 supervisor
-fabric2
+fabric
