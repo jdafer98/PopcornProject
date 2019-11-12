@@ -7,7 +7,7 @@ def build(name):
 	run("pip install -r requirements.txt")
 	run("sudo mv ./controv3rsial.conf /etc/supervisor/conf.d")
 @task
-def build_heroku(name):
+def buildheroku(name):
 	run("gunicorn --bind 0.0.0.0:$PORT restapi:app")
 @task
 def test(name):

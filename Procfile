@@ -1,1 +1,1 @@
-web: fab build_heroku
+web: fab buildheroku
