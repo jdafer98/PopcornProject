@@ -5,6 +5,8 @@ from invoke import run
 def build(name):
 	run("export CV3_PORT=31416")
 	run("pip install -r requirements.txt")
+	run("sudo chmod 0777 ./cv3_prebuild.sh")
+	run("./cv3_prebuild.sh")
 	run("sudo mv ./controv3rsial.conf /etc/supervisor/conf.d")
 @task
 def test(name):
