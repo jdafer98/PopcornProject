@@ -1,1 +1,1 @@
-web: fab buildheroku
+web: fab buildheroku && echo "START"
