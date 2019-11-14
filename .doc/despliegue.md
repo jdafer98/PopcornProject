@@ -25,7 +25,7 @@ Con esto, sería suficiente para desplegar la aplicación. Pero nosotros queremo
 
 Como no podría ser de otra forma, Heroku vuelve a dejar esta tarea extraordinariamente fácil. Tan solo nos movemos al apartado _deploy_, creamos un pipeline y decimos que queremos sincronizarlo con git. Cuando este listo. Quedaría así: 
 
-![heroku1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/heroku1.png)
+![heroku1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/heroku1.png) 
 
 A partir de aquí, cada pull request hará trigger al un webhook de github, y se actualizará el repo de heroku también.
 
@@ -42,15 +42,15 @@ Horrible. Totalmente nefasto. Mi experiencia no podría haber sido peor. Me fio 
 4. Ahora tenemos una webapp creada pero vacia de contentido. Para sincronizarla con github:
 
     4.1 Seleccionamos _Deployment center_ y clickeamos en github (otrorgando los permisos necesarios).
-	![azure2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/azure2.png)
+	![azure2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure2.png)
 
     4.2 Elegimos el sistema de buildeo. Se recomienda el motor kudu.
-	![azure4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/azure4.png)
+	![azure4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure4.png)
 
     4.3 En la configuración, seleccionamos nuestro usuario, el repo y la rama.
- 	![azure5](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/azure5.png)
+ 	![azure5](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure5.png)
     4.4 Le damos a aceptar. Si todo va bien, podemos acceder a la url que se nos proporciona y observamos atónitos que no ocurre **absolutamente nada**.
-	![azure3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/azure3.png)
+	![azure3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure3.png)
 
 
 Si nuestra aplicación se llama app.py o application.py y la aplicación flask se llama app, azure debería colocarnos nuestra aplicación en un puerto. En mi caso, lo he intentado y no lo ha hecho. 
@@ -72,7 +72,7 @@ El unico problema es que nuestro plan solo dura 60 dias pero supongo que será s
 
 2. Podemos descargar el cli. Está un poco escondido. Es un ELF sencillo que puedes colocar en algún sitio especificado en la variable de entorno $PATH. Así siempre lo tienes a mano. 
 
-![openshift1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/openshift1.png)
+![openshift1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift1.png)
 
 3. Este cli funciona genial. Los comandos a ejecutar vendrían a ser:
 ```bash
@@ -105,13 +105,13 @@ Por último estos dos comandos nos serán útiles. El primero sirve para arranca
 4. Siendo python, si tu fichero aplicación se llama "wsgi.py", y el nombre de tu aplicación flask "application", muy amablemente Openshift levantará la aplicación por tí. Si no deseas esto, puedes seguir [este enlace](https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/basic_deployment_operations.html#executing-commands-inside-a-container-deployments) en el apartado "Executing Commands Inside a Container". Básicamente lo que tenemos que hacer es irnos al apartado "Workload"/"Deploy config" y modificar el YAML de nuestra app. 
 
 Hay que añadir un apartado _command_ debajo de spec, tal y como dice el enlace.
-![openshift2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/openshift2.png)
+![openshift2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift2.png)
 
 5. Por úlitmo, para sincronizar con github, he seguido [este enlace](https://docs.openshift.com/container-platform/3.5/dev_guide/builds/triggering_builds.html) junto con [este video](https://www.youtube.com/watch?v=1HR0l1b9YNU).
 
 Tenemos que usar el comando que anteriormente comenté (oc describe bc controv3rsial) y copiar el enlace de _github webhook_.
 
-![openshift3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/openshift3.png)
+![openshift3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift3.png)
 
 Veremos que tiene un parametro "secret" en medio de la url. Este tenemos que sustituirlo por nuestro secret que se encuentra en el apartado Build/Build Configs. Tendremos que mirar en YAML y encontrar el _github webhook secret_.
 
@@ -119,6 +119,6 @@ Para terminar, Nos vamos a git, settings, webhooks. Creamos un nuevo webhook pon
 
 Cuando terminemos, cada push a nuestro repo rebuildeará nuestro despliegue en Openshift.
 
-![openshift4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/openshift4.png)
+![openshift4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift4.png)
 
 
