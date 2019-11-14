@@ -3,24 +3,24 @@ from encuestas import *
 import os
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 enc = Encuestas()
 
-@app.route('/')
+@application.route('/')
 def raiz():
 	return jsonify('{ "status": "OK" }')
 
-@app.route('/status')
+@application.route('/status')
 def status():
 	return jsonify('{ "status": "OK" }')
 
-@app.route('/crear_encuesta',methods=['POST'])
+@application.route('/crear_encuesta',methods=['POST'])
 def ruta_crear_encuesta():
 	nueva_encuesta = enc.crear_encuesta(request.form['name'])
 	enc.add(nueva_encuesta)
 	return jsonify(enc.encuesta2json(nueva_encuesta))
 
-@app.route('/votar', methods=['PUT'])
+@application.route('/votar', methods=['PUT'])
 def ruta_votar():
 	a = enc.extraer_por_hashcode(request.form['hc'])
 	if a != -1:
@@ -41,7 +41,7 @@ def ruta_votar():
 	else:
 		return jsonify('{ "error": "404 NOT FOUND" }'), 404
 
-@app.route('/get_encuesta',methods=['GET'])
+@application.route('/get_encuesta',methods=['GET'])
 def get_encuesta():
 	a = enc.extraer_por_hashcode(request.args.get('hc'))
 	if a != -1:
@@ -49,7 +49,7 @@ def get_encuesta():
 	else:
 		return jsonify('{ "error": "404 NOT FOUND" }'), 404
 
-@app.route('/eliminar_encuesta',methods=['DELETE'])
+@application.route('/eliminar_encuesta',methods=['DELETE'])
 def eliminar_encuesta():
 	a = enc.eliminar_por_hashcode(request.form['hc'])
 	if a == 0:
