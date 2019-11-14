@@ -75,7 +75,7 @@ Todas estas tareas funcionan como un wrapper de supervisor, el cual será instal
 
 **¿Quieres saber como ha sido configurado supervisor?** [Supervisor](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/supervisor.md)
 
-**¿Más información acerca del despliegue?** [despliegue]((https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue.md))
+**¿Más información acerca del despliegue?** [despliegue](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue.md)
 
 
 
