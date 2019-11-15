@@ -26,16 +26,16 @@ def ruta_votar():
 	if a != -1:
 		if int(request.form['opcion']) == 1:
 			enc.votar(a,'O1')
-			return jsonify(status='200 OK')
+			return jsonify(status='200_OK')
 		elif int(request.form['opcion']) == 2:
 			enc.votar(a,'O2')
-			return jsonify(status='200 OK')
+			return jsonify(status='200_OK')
 		elif int(request.form['opcion']) == 3:
 			enc.votar(a,'O3')
-			return jsonify(status='200 OK')
+			return jsonify(status='200_OK')
 		elif int(request.form['opcion']) == 4:
 			enc.votar(a,'O4')
-			return jsonify(status='200 OK')
+			return jsonify(status='200_OK')
 		else:
 			return jsonify(error='400 INVALID OPTION'), 400
 	else:
@@ -53,7 +53,7 @@ def get_encuesta():
 def eliminar_encuesta():
 	a = enc.eliminar_por_hashcode(request.form['hc'])
 	if a == 0:
-		return jsonify(status='200 OK')
+		return jsonify(status='200_OK')
 	else:
 		return jsonify(error='404 NOT FOUND'), 404
 
