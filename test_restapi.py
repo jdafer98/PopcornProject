@@ -81,7 +81,6 @@ class MyTest(LiveServerTestCase):
 		req = urllib.request.Request(self.get_server_url() + "/votar",str.encode(data),method='PUT')
 		response = urllib.request.urlopen(req)
 		data = response.read().decode('utf-8')
-		data_dict = literal_eval(json.loads(data))
 
 
 		self.assertEqual(response.code, 200)
