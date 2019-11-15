@@ -13,6 +13,13 @@ Lenguaje: [![Powered by: Python](https://img.shields.io/badge/powered%20by-pytho
 
 buildtool: fabfile.py
 
+Despliegue: https://controv3rsial.herokuapp.com/
+
+**AUNQUE TAMBIÉN:** 
+Openshift: http://controv3rsial-controv3rsial.apps.us-east-2.starter.openshift-online.com/
+
+Azure Webapps: https://controv3rsial.azurewebsites.net/
+
 ## Planteamiento
 
 El proyecto se plantea como un servicio web para realizar encuestas. Un usuario anónimo podrá comenzar una encuesta y obtener un enlace (o un token en formato de "hashcode"). Ese enlace puede ser publicado donde se desee y permite una votación anónima en la encuesta a donde dicho enlace pertenezca. Ese enlace tambíen servirá para consultar el estado de la encuesta.

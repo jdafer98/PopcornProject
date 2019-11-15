@@ -62,7 +62,7 @@ Si Azure no quiere arrancar mi aplicación, yo no le voy a obligar. Así que cor
 
 ## OpenShift
 
-Bastante mejor que Azure. No hay tantos recursos como heroku o Azure, pero si los suficientes para desplegar la aplicación.
+Bastante mejor que Azure. No hay tanta documentación como con heroku o Azure, pero si la suficiente para desplegar la aplicación.
 Aquí las infraestructuras proporcionadas se llaman _pods_. No está al nivel de _dyno_ pero sigue siendo un nombre guay.
 
 El unico problema es que nuestro plan solo dura 60 dias pero supongo que será suficiente para mi propósito.
