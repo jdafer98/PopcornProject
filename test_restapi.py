@@ -69,7 +69,7 @@ class MyTest(LiveServerTestCase):
 		req = urllib.request.Request(self.get_server_url() + "/crear_encuesta",str.encode(data),method='POST')
 		response = urllib.request.urlopen(req)
 		data = response.read().decode('utf-8')
-		data_dict = json.loads(data)
+		data_dict = literal_eval(json.loads(data))
 		temp_hashcode = data_dict['hashcode']
 
 
