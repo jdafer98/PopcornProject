@@ -12,7 +12,7 @@ def buildheroku(name):
 
 @task
 def builddocker(name):
-	run("gunicorn --bind 0.0.0.0:$CV3_PORT restapi:app")
+	run("gunicorn --bind 0.0.0.0:$PORT restapi:app")
 
 @task
 def test(name):
