@@ -16,9 +16,19 @@ buildtool: fabfile.py
 Despliegue: https://controv3rsial.herokuapp.com/
 
 **AUNQUE TAMBIÉN:** 
+
+
 Openshift: http://controv3rsial-controv3rsial.apps.us-east-2.starter.openshift-online.com/
 
 Azure Webapps: https://controv3rsial.azurewebsites.net/
+
+Contenedor: https://controv3rsial-docker.herokuapp.com/
+
+**AUNQUE TAMBIÉN**
+
+
+Azure: https://controv3rsial-docker.azurewebsites.net
+
 
 ## Planteamiento
 
