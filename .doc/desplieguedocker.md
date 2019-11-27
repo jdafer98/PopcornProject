@@ -40,102 +40,111 @@ CMD fab builddocker
 
 ```
 
+Podemos testear nuestro contenedor buildeando la imagen con **docker build -t <nombre:etiqueta>**
+Y después correrla, o bien haciendo otro yml para docker-compose, o bien simplemente haciendo docker run dando valor a la variable de entorno (-e) y conectando el puerto del contenedor con la máquina (-p). Es posible que una vez ejecutado no queremos que se quede parado y guardado. Ponemos entonces el flag --rm.
+
+En nuestro caso, el puerto 31416 del contenedor se conecta al puerto 31416 del host. 
+
+```bash
+sudo docker run -e CV3_PORT=31416 -p 31416:$CV3_PORT --rm controv3rsial
+```
+Si comprobamos que todo es correcto y que el contenedor tiene el comportamiento esperado, toca desplegarlo.
+
+## DockerHub
+
+Es interesante subir nuestra imagen a dockerhub con la intención de desplegar automáticamente desde aquí, a la plataforma que hallamos elegido. Siguiendo principalmente [la documentación oficial](https://docs.docker.com/docker-hub/repos/) se procede como sigue:
+
+1. Creamos una cuenta de DockerHub si no tenemos ya una.
+
+2. Accedemos al portal web (solo la primera vez, para crear el recurso). Nos encontramos algo como esto:
+
+![Docker-1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-1.png)
+
+    2.1 Le damos a **Create Repository**.
+    2.2 Creamos un repositorio público normal y corriente.
+![Docker-2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-2.png)
+
+    2.3 Sería interesante conectarlo con git en la opción de build. Seguimos [este enlace](https://docs.docker.com/docker-hub/builds/)
+![Docker-3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-3.png)
+
+    2.4 Autorizamos DockerHub a acceder a nuestro repo.
+
+![Docker-4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-4.png)
+
+    2.5 Y nuestro recurso quedaría así.
+
+![Docker-5](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-5.png)
+
+    2.6 En la configuración, enlazamos a nuestro repo
+
+![Docker-6](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-6.png)
+
+    2.7 A partir de aquí, con cada push de github, la imagen se buildea como contenedor
+![Docker-7](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-7.png)
+
+
 
 
 ## Heroku
+
+Mi intención para desplegar en Heroku, era hacerlo a través de DockerHub, sin embargo me ha sido casi imposible encontrar documentación acerca de como conectar esos dos recursos. Siguiendo [este enlace](https://devcenter.heroku.com/categories/deploying-with-docker), he conseguido hacerlo desde github a heroku.
+
+Lo primero, sería crear un fichero heroku.yml que bastaría con que contenga lo siguiente:
+
+```yaml
+build:
+  docker:
+    web: Dockerfile
+```
+En realidad, es el mismo heroku.yml que se encuentra en el enlace anterior, pero sin la sección "run". Eso es debido a que si no se pone esa sección, se ejecuta el CMD del Dockerfile, que es precisamente lo que queremos.
+
+a partir de aquí, tabajaremos con el CLI de Heroku.
+
+hacemos **heroku login** como hicimos para desplegar la aplicación en el PaaS y hacemos **heroku create <nuevo_nombre>** para crear otro recurso. **NOTA:** he tenido problemas para logearme por un error hacerca de un "secret_service" o algo así. Encontré en una discusión de git que el error se solucionaba renombrando un archivo con otro nombre para que heroku lo creara de nuevo. Algo así como:
+
+```bash
+sudo mv docker-credential-secretservice docker-credential-secretservice_SAVE
+```
+
+
+
+Una vez creado, tenemos que cambiar la fuente remota a la del nuevo recurso. Sino todas las operaciones las realizaremos sobre la aplicación que desplegamos anteriormente y no sobre este nuevo recurso. Para ello:
+
+```bash
+heroku git:remote -a <nuevo_nombre>
+```
+
+A continuación cambiamos el "stack" de heroku-18 (Default) a container con:
+
+```bash
+heroku stack:set container
+```
+
+Luego debemos usar un comando especial para subir los cambios a heroku que parece no ser necesario para la corrección así que no voy a comentarlo.
+
+Todavía nos queda sincronizar la aplicación con git. Tendríamos que hacer exactamente lo que hicimos para la aplicación en el PaaS. Dejo captura:
+
+![Docker-8](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/Docker-8.png)
 
 
 
 ## Azure Webapps
 
-Horrible. Totalmente nefasto. Mi experiencia no podría haber sido peor. Me fio más de hacer _port forwarding_ en mi casa que dejar que Microsoft tenga posesión de mi aplicación. Lo único que bueno, regalan 100$ a estudiantes si ingresas tu correo de la universidad así que decidí darle una oportunidad.
-
-1. De nuevo, lo primero es disponer de una cuenta. Aquí es un poco más difícil (como el resto de cosas). Tienes primero que solicitar el plan de estudiantes poniendo el correo de la universidad, como se dijo antes (y de paso, todos tus datos personales, donde vives y casi hasta como se llama tu mascota, pero bueno...). Cuando tienes tu cuenta y un sku (en mi caso el Github Student Developer Pack), podemos empezar.
-
-2. Lo siguiente será descargar el cli SI NO FUESE EL PEOR CLI DE LA HISTORIA DE LOS CLIs. La instalación es prácticamente automática, eso sí. **curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash**. Una vez instalado, no lo vuelvas a usar, porque prácticamente, a dia de hoy, todas las órdenes a parte de **az login** fracasan. 
-
-3. Ahora como un humilde usuario común, accedemos al interfaz web. Nos logueamos en Azure y nos vamos a nuestro portal. Desde allí, creamos un **app service**. Nos pedirá algunos datos. Por ejemplo el grupo de recursos, el nombre de la aplicación, el lenguaje, la región, el sku... Una vez hecho esto le damos a _Aceptar_ y continuamos.
-
-4. Ahora tenemos una webapp creada pero vacia de contentido. Para sincronizarla con github:
-
-    4.1 Seleccionamos _Deployment center_ y clickeamos en github (otrorgando los permisos necesarios).
-	![azure2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure2.png)
-
-    4.2 Elegimos el sistema de buildeo. Se recomienda el motor kudu.
-	![azure4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure4.png)
-
-    4.3 En la configuración, seleccionamos nuestro usuario, el repo y la rama.
- 	![azure5](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure5.png)
-    4.4 Le damos a aceptar. Si todo va bien, podemos acceder a la url que se nos proporciona y observamos atónitos que no ocurre **absolutamente nada**.
-	![azure3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/azure3.png)
+La razón de escoger esta vez Azure, en lugar de otra plataforma, es precisamente que he leido que está bastante acondicionado para desplegar contenedores, y que se puede hacer de forma muy sencilla para desplegar desde dockerhub. Me hubiese gustado posteriormente desplegar en OpenShift pero ya si que no me daba tiempo. Tengo mucha carga externa a la asignatura.
 
 
-Si nuestra aplicación se llama app.py o application.py y la aplicación flask se llama app, azure debería colocarnos nuestra aplicación en un puerto. En mi caso, lo he intentado y no lo ha hecho. 
+Dicho esto, la forma de desplegar en Azure desde DockerHub, es muy similar a desplegar una aplicación normal.
 
-Como de todas formas no quería que sucediese automáticamente, he optado por incluir un _startup command_ en el apartado _Configuration/General Settings_. Tampoco funciona.
+1. Creamos un _App service_, pero esta vez decimos que nuestro despliegue es un contenedor, no código:
 
-Si Azure no quiere arrancar mi aplicación, yo no le voy a obligar. Así que corramos un tupido velo. He querido dejar constancia de que, a pesar de no haber funcionado, si que he invertido tiempo y esfuerzo en leer documentación y probar cosas.
+![adocker-1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/adocker-1.png)
 
+2. En las opciones del contenedor, Cambiamos a DockerHub, y ponemos nuestra ruta. Hay una errata que corregí posteriormente. La etiqueta es latest y no lastest (porque viene de late, no de last. Fallo mio).
 
-## OpenShift
+![adocker-2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/adocker-2.png)
 
-Bastante mejor que Azure. No hay tanta documentación como con heroku o Azure, pero si la suficiente para desplegar la aplicación.
-Aquí las infraestructuras proporcionadas se llaman _pods_. No está al nivel de _dyno_ pero sigue siendo un nombre guay.
-
-El unico problema es que nuestro plan solo dura 60 dias pero supongo que será suficiente para mi propósito.
+3. Cuando aceptamos, realmente se buildea y se levanta el contenedor. Sorprende que sea tan sencillo pero es así. 
 
 
-1. De nuevo, tenemos que registrarnos con nuestra cuenta de redhat y se nos proporcionará un plan de 60 dias.
-
-2. Podemos descargar el cli. Está un poco escondido. Es un ELF sencillo que puedes colocar en algún sitio especificado en la variable de entorno $PATH. Así siempre lo tienes a mano. 
-
-![openshift1](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift1.png)
-
-3. Este cli funciona genial. Los comandos a ejecutar vendrían a ser:
-```bash
-	oc login /url/
-```
-
-url es una url que se puede encontrar haciendo click en nuestro nombre de usuario, en la sección "Copy login command".
-
-```bash
-oc new-project controv3rsial
-
-oc new-app python~https://github.com/jdafer98/Controv3rsial.git --name controv3rsial
-```
-
-con estos dos comandos, hemos creado un proyecto y una aplicación dentro de él. Notese que aunque hayamos introducido el repo de github, este será de donde se extraigan los archivos pero no estará sincronizado con el (aún).
-
-```bash
-oc expose svc/controv3rsial
-```
-Este último comando solo sirve para exponer la url al exterior.
-
-```bash
-oc start-build controv3rsial
-
-oc describe bc controv3rsial
-```
-
-Por último estos dos comandos nos serán útiles. El primero sirve para arrancar una build en openshift y el segundo nos dará información, entre la que se puede encontrar el uri de los **webhooks** de github, que usaremos más adelante.
-
-4. Siendo python, si tu fichero aplicación se llama "wsgi.py", y el nombre de tu aplicación flask "application", muy amablemente Openshift levantará la aplicación por tí. Si no deseas esto, puedes seguir [este enlace](https://docs.openshift.com/container-platform/3.3/dev_guide/deployments/basic_deployment_operations.html#executing-commands-inside-a-container-deployments) en el apartado "Executing Commands Inside a Container". Básicamente lo que tenemos que hacer es irnos al apartado "Workload"/"Deploy config" y modificar el YAML de nuestra app. 
-
-Hay que añadir un apartado _command_ debajo de spec, tal y como dice el enlace.
-![openshift2](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift2.png)
-
-5. Por úlitmo, para sincronizar con github, he seguido [este enlace](https://docs.openshift.com/container-platform/3.5/dev_guide/builds/triggering_builds.html) junto con [este video](https://www.youtube.com/watch?v=1HR0l1b9YNU).
-
-Tenemos que usar el comando que anteriormente comenté (oc describe bc controv3rsial) y copiar el enlace de _github webhook_.
-
-![openshift3](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift3.png)
-
-Veremos que tiene un parametro "secret" en medio de la url. Este tenemos que sustituirlo por nuestro secret que se encuentra en el apartado Build/Build Configs. Tendremos que mirar en YAML y encontrar el _github webhook secret_.
-
-Para terminar, Nos vamos a git, settings, webhooks. Creamos un nuevo webhook poniendo en el _payload_ la uri anterior con el secret sustituido y content-type: Application/json.
-
-Cuando terminemos, cada push a nuestro repo rebuildeará nuestro despliegue en Openshift.
-
-![openshift4](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue_imagenes/openshift4.png)
 
 
