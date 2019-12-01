@@ -15,7 +15,7 @@ buildtool: fabfile.py
 
 Despliegue: https://controv3rsial.herokuapp.com/
 
-DockerHub: https://hub.docker.com/repository/docker/jdafer98/controv3rsial
+DockerHub: https://hub.docker.com/r/jdafer98/controv3rsial
 
 
 **AUNQUE TAMBIÉN:** 
