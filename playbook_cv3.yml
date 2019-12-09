@@ -1,0 +1,34 @@
+- hosts: all
+  remote_user: user1
+
+  tasks:
+
+  - name: Actualizar apt
+    become: true
+    command: sudo apt-get update
+
+  - name: Instalar Python
+    become: true
+    apt: pkg=python3.7 state=present
+
+  - name: Instalar pip3
+    become: true
+    command: sudo apt-get -y install python3-pip
+
+  - name: Instalar Git
+    become: true
+    command: sudo apt-get install -y git
+
+  - name: Instalar Fabric
+    become: true
+    command: pip3 install fabric
+
+  - name: Instalar Supervisor
+    become: true
+    command: pip3 install supervisor
+
+  - name: Clonar repo
+    git: repo=https://github.com/jdafer98/Controv3rsial.git dest=controv3rsial/ force=yes
+
+  - name: Buildeo
+    command: pip3 install -r controv3rsial/requirements.txt
