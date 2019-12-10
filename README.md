@@ -13,6 +13,8 @@ Lenguaje: [![Powered by: Python](https://img.shields.io/badge/powered%20by-pytho
 
 buildtool: fabfile.py
 
+provision: playbook_cv3.yml
+
 Despliegue: https://controv3rsial.herokuapp.com/
 
 DockerHub: https://hub.docker.com/r/jdafer98/controv3rsial
@@ -98,6 +100,8 @@ Todas estas tareas funcionan como un wrapper de supervisor, el cual será instal
 **¿Más información acerca del despliegue en el PaaS?** [despliegue PaaS](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/despliegue.md)
 
 **¿Más información acerca del despliegue como Contenedor?** [despliegue Contenedor](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/desplieguedocker.md)
+
+**¿Más información acerca del provisionamiento?** [Provisionamiento](https://github.com/jdafer98/Controv3rsial/blob/master/.doc/provisionamiento.md)
 
 ## Troubleshooting
 

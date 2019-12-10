@@ -27,3 +27,7 @@ def stop(name):
 @task
 def status(name):
 	run("sudo supervisorctl status")
+
+@task
+def provide(name):
+	run("ansible-playbook playbook_cv3.yml")
